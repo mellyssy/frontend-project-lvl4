@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import {
-  Button, Form,
+  Button, Form, Container, Row, Col,
 } from 'react-bootstrap';
 import axios from 'axios';
 import * as Yup from 'yup';
@@ -17,9 +17,9 @@ const LoginForm = () => {
   const [authFailed, setAuthFailed] = useState(false);
   const errMsg = 'Неверные имя пользователя или пароль';
   return (
-    <div className="container-fluid">
-      <div className="row justify-content-center pt-5">
-        <div className="col-sm-4">
+    <Container fluid>
+      <Row className="justify-content-center pt-5">
+        <Col sm={6} md={4} lg={3}>
           <Formik
             initialValues={{
               username: '',
@@ -69,7 +69,7 @@ const LoginForm = () => {
                 <Form.Group controlId="formGroupPassword" className="mb-3">
                   <Form.Label>Пароль</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="password"
                     name="password"
                     value={values.password}
                     onChange={handleChange}
@@ -85,9 +85,9 @@ const LoginForm = () => {
             <span className="small mb-2">Нет аккаунта?</span>
             <Link to="/signup">Регистрация</Link>
           </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

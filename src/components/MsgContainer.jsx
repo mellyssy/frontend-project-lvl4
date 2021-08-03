@@ -1,5 +1,5 @@
 import React from 'react';
 
-const MsgContainer = () => 'chat interface';
+const MsgContainer = () => (<p>chat interface</p>);
 
 export default MsgContainer;

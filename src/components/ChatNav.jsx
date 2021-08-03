@@ -1,15 +1,20 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 
-const ChatNav = () => (
-  <Nav variant="pills" className="flex-column mt-2">
-    <Nav.Item>
-      <Nav.Link># general</Nav.Link>
+const ChatNav = ({ channels }) => {
+  const channelEls = channels.map(({ id, name }) => (
+    <Nav.Item key={id}>
+      <Nav.Link href={`/${name}`}>
+        {'# '}
+        {name}
+      </Nav.Link>
     </Nav.Item>
-    <Nav.Item>
-      <Nav.Link># random</Nav.Link>
-    </Nav.Item>
-  </Nav>
-);
+  ));
+  return (
+    <Nav variant="pills" className="flex-column mt-2" defaultActiveKey="/general">
+      {channelEls}
+    </Nav>
+  );
+};
 
 export default ChatNav;
